@@ -1,5 +1,3 @@
-var app = angular.module('airportApp', []);
-
 app.controller('MainController', function($scope, $http) {
   $http.get('/airports').success(function(data) {
     $scope.airports = data;
@@ -21,17 +19,3 @@ app.controller('MainController', function($scope, $http) {
     $scope.queryDest = "";
   }
 });
-
-app.directive('selectAirport', [function () {
-  return {
-    restrict: 'A',
-    scope: {
-      set: "&"
-    },
-    link: function (scope, elm, attrs) {
-      elm.on('click', function() {
-        scope.set({name: elm.text()})
-      });
-    }
-  };
-}])
