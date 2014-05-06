@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" ng-app="airportApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Airport Info</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="MainController">
+  <h1>Airports</h1>
+  <label for="">Origin</label>
+  <input type="text" ng-model="queryOrigin" />
+  <ul ng-repeat="airport in airports | filter:queryOrigin" ng-show="queryOrigin">
+    <li ng-cloak select-airport set="setOrigin(name)" ng-show="queryOrigin != airport.name" ng-hide="queryDest == airport.name">{{airport.name}}</li>
+  </ul>
+  <label for="">Destination</label>
+  <input type="text" ng-model="queryDest" />
+  <ul ng-repeat="airport in airports | filter:queryDest" ng-show="queryDest">
+    <li ng-cloak select-airport set="setDest(name)" ng-show="queryDest != airport.name" ng-hide="queryOrigin == airport.name">{{airport.name}}</li>
+  </ul>
+  <div class="button" ng-click="getAirportData()">Submit</div>
+  <div class="button" ng-click="clearAirportData()">Cancel</div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
