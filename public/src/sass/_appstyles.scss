@@ -3,3 +3,48 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+
+.button-container {
+  line-height: 73px;
+}
+
+#custom-modal {
+  background: rgba(0,0,0, 0.7);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  .modal-content {
+    position: relative;
+    top: 50%;
+    img,
+    h1 {
+      width: 70%;
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+    }
+    h1 {
+      color: #fff;
+      position: relative;
+      top: -55px;
+    }
+  }
+}
+
+#custom-modal.ng-hide-add, #custom-modal.ng-hide-remove {
+  transition:1s linear all;
+  display:block!important;
+}
+
+#custom-modal.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+}
+
+
+body.noscroll {
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+}

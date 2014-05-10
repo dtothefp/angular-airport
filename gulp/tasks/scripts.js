@@ -6,6 +6,7 @@ var handleErrors = require('../util/handleErrors');
 var jshint       = require('gulp-jshint');
 var ngmin        = require('gulp-ngmin');
 var order        = require('gulp-order');
+var streamqueue  = require('streamqueue');
 
 // gulp.task('scripts', function() {
 //     gulp.src(['./src/config/{,**/}.*js', './src/services/{,**/}*.js', './src/modules/**/*.js', './src/primitives/**/*.js'])
@@ -15,13 +16,12 @@ var order        = require('gulp-order');
 // });
 
 gulp.task('scripts', function() {
-    return gulp.src('public/src/js/{, **/}*.js')
-        //.pipe(jshint())
-        //.pipe(jshint.reporter('default'))
-        .pipe(order([
-          'public/src/js/config.js',
-          'public/src/js/**/*.js'
-        ]))
+    return streamqueue({ objectMode: true },
+        gulp.src('./public/src/js/config.js'),
+        gulp.src('./public/src/js/services.js'),
+        gulp.src('./public/src/js/controllers.js'),
+        gulp.src('./public/src/js/directives.js')
+    )
         .pipe(concat('app.js'))
         //.pipe(ngmin({dynamic: true}))
         .pipe(gulp.dest('public/build/js'))

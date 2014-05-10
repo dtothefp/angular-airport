@@ -1,1 +1,1 @@
-var app = angular.module('airportApp', []);
+var app = angular.module('airportApp', ['ngResource', 'ngAnimate']);

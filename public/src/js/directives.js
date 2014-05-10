@@ -11,3 +11,16 @@ app.directive('selectAirport', [function () {
     }
   };
 }]);
+
+app.directive('verticalAlign', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, elm, attr) {
+        function sizeElm() {
+          elm.css("margin-top", "-" + elm[0].offsetHeight/2 + "px");
+        }
+        sizeElm();
+        window.addEventListener('resize', sizeElm);
+    }
+  }
+});

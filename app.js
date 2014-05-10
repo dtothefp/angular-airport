@@ -27,8 +27,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/airportReq', routes.getAirports);
 app.get('/airports', routes.airportList);
-app.get('/api/:origin/:dest', routes.json);
+app.get('/api/:origin/:dest', routes.api);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

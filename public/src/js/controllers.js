@@ -1,21 +1,34 @@
-app.controller('MainController', function($scope, $http) {
-  $http.get('/airports').success(function(data) {
-    $scope.airports = data;
-    console.log($scope.airports);
-  });
-  $scope.setOrigin = function(name) {
-    $scope.queryOrigin = name;
-    $scope.$apply();
+app.controller('MainController', function($scope, $http, RequestService) {
+  var originCode,destCode;
+  $scope.showLoader = true;
+  $scope.callback = function (data) {
+    return data;
   }
-  $scope.setDest = function(name) {
-    $scope.queryDest = name;
-    $scope.$apply();
+  $http.get('/airportReq').success(function(data) {
+    $scope.airports = data.airports;
+    $scope.showLoader = false;
+  });
+  $scope.setOrigin = function(airport) {
+    originCode = airport.code;
+    $scope.queryOrigin = airport.name;
+  }
+  $scope.setDest = function(airport) {
+    destCode = airport.code;
+    $scope.queryDest = airport.name;
   }
   $scope.getAirportData = function() {
-    console.log("get data");
+    RequestService.compareAirports.get({
+      origin: originCode,
+      dest: destCode
+    }, function(resp) {
+      $scope.airportData = resp;
+    }, function(err) {
+      console.log("error", err);
+    });
   }
   $scope.clearAirportData = function() {
     $scope.queryOrigin = "";
     $scope.queryDest = "";
+    $scope.airportData = "";
   }
 });
