@@ -1,0 +1,27 @@
+<div class="row" ng-controller="ChooseAirportController">
+  <div class="small-12 columns">
+    <h1>Airports</h1>
+  </div>
+  <div class="small-4 columns">
+    <label for="">Origin</label>
+    <input type="text" ng-model="queryOrigin" />
+    <ul ng-show="queryOrigin" alternate-panel class="airport-items">
+      <li ng-repeat="airport in airports | filter:queryOrigin | limitTo: limit" ng-cloak select-airport ng-click="setOrigin(airport)" ng-show="queryOrigin != airport.name" ng-hide="queryDest == airport.name" class="panel radius">
+        <span>{{airport.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="small-4 columns">
+    <label for="">Destination</label>
+    <input type="text" ng-model="queryDest" />
+    <ul ng-show="queryDest" alternate-panel class="airport-items">
+      <li ng-repeat="airport in airports | filter:queryDest | limitTo: limit" ng-cloak select-airport ng-click="setDest(airport)" ng-show="queryDest != airport.name" ng-hide="queryOrigin == airport.name" class="panel radius">
+        <span>{{airport.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="small-4 columns button-container">
+    <div class="button tiny" ng-click="getAirportData()">Submit</div>
+    <div class="button tiny" ng-click="clearAirportData()">Cancel</div>
+  </div>
+</div> <!-- end row -->

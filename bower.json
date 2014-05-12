@@ -17,6 +17,7 @@
     "angular": "~1.2.16",
     "foundation": "~5.2.2",
     "angular-resource": "~1.2.16",
-    "angular-animate": "~1.2.16"
+    "angular-animate": "~1.2.16",
+    "angular-ui-router": "~0.2.10"
   }
 }

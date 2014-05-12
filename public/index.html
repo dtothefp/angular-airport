@@ -5,56 +5,27 @@
   <title>Airport Info</title>
   <link rel="stylesheet" href="build/css/app.css">
 </head>
-<body ng-controller="MainController" ng-class="{noScroll: showLoader}">
-  <div class="row">
-    <div class="small-12 columns">
-      <h1>Airports</h1>
-    </div>
-    <div class="small-4 columns">
-      <label for="">Origin</label>
-      <input type="text" ng-model="queryOrigin" />
-      <ul ng-repeat="airport in airports | filter:queryOrigin" ng-show="queryOrigin">
-        <li ng-cloak select-airport ng-click="setOrigin(airport)" ng-show="queryOrigin != airport.name" ng-hide="queryDest == airport.name">{{airport.name}}</li>
-      </ul>
-    </div>
-    <div class="small-4 columns">
-      <label for="">Destination</label>
-      <input type="text" ng-model="queryDest" />
-      <ul ng-repeat="airport in airports | filter:queryDest" ng-show="queryDest">
-        <li ng-cloak select-airport ng-click="setDest(airport)" ng-show="queryDest != airport.name" ng-hide="queryOrigin == airport.name">{{airport.name}}</li>
-      </ul>
-    </div>
-    <div class="small-4 columns button-container">
-      <div class="button tiny" ng-click="getAirportData()">Submit</div>
-      <div class="button tiny" ng-click="clearAirportData()">Cancel</div>
-    </div>
-  </div>
-  <div class="row" ng-show="airportData">
-    <div class="small-6 columns">
-      <ul>
-        <li>{{airportData.distance}} Nautical Miles</li>
-        <li>{{airportData.origin.name}}</li>
-        <ul>
-          <li>{{airportData.origin.lat}} lattitude</li>
-          <li>{{airportData.origin.lng}} longitude</li>
-        </ul>
-        <li>{{airportData.dest.name}}</li>
-        <ul>
-          <li>{{airportData.dest.lat}} lattitude</li>
-          <li>{{airportData.dest.lng}} longitude</li>
-        </ul>
-      </ul>
-    </div>
-  </div>
+<body ng-controller="MainController" ng-class="{noscroll: showLoader}">
+  <div ui-view class="slide" ng-hide="showLoader"></div>
   <div id="custom-modal" ng-show="showLoader">
-    <div class="modal-content" vertical-align>
+    <div class="modal-content">
       <img src="http://media.giphy.com/media/hrKmmzitRaGcg/giphy.gif" alt="">
       <h1>Loading Airport Data</h1>
     </div>
   </div>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <!-- inject:js -->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+  <script src="/bower_components/jquery.cookie/jquery.cookie.js"></script>
+  <script src="/bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/foundation/js/foundation.js"></script>
+  <!-- endinject -->
+  <script src="//localhost:35729/livereload.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0lmKzxJgXKdc0tW5IMthyD9OPdAqdUQI&sensor=true"></script>
   <script src="build/js/app.js"></script>
 </body>
 </html>

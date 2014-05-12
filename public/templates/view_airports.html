@@ -1,0 +1,34 @@
+<div class="row" ng-show="airportData" ng-controller="ViewAirportsController">
+  <table class="small-12 columns airport-stats" align="center">
+    <thead>
+      <tr>
+        <th width="200">Location</th>
+        <th width="150">Lattitude</th>
+        <th width="150">Longitude</th>
+        <th width="150">Distance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Origin: {{airportData.origin.name}}</td>
+        <td>{{airportData.origin.lat}}</td>
+        <td>{{airportData.origin.lng}}</td>
+        <td>{{airportData.distance}}</td>
+      </tr>
+      <tr>
+        <td>Destination: {{airportData.dest.name}}</td>
+        <td>{{airportData.dest.lat}}</td>
+        <td>{{airportData.dest.lng}}</td>
+        <td>{{airportData.distance}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <div id="map-wrapper">
+      <div id="map-canvas" map></div>
+    </div>
+  </div>
+</div>
+
