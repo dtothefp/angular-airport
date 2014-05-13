@@ -23,7 +23,7 @@ gulp.task('scripts', function() {
         gulp.src('./public/src/js/directives.js')
     )
         .pipe(concat('app.js'))
-        //.pipe(ngmin({dynamic: true}))
+        .pipe(ngmin())
         .pipe(gulp.dest('public/build/js'))
         .on('error', handleErrors)
         .pipe(livereload());

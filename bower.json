@@ -21,10 +21,6 @@
     "angular-ui-router": "~0.2.10"
   },
   "overrides": {
-        "foundation": {
-            "dependencies": {
 
-            }
-        }
     }
 }
